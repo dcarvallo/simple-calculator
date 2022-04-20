@@ -6,6 +6,7 @@ function App() {
   useEffect(() => {
     function handleKeyDown(e) {
     if(!validate(e.key)) return;
+   if(e.key ==='Enter') check();
     var regex = /^\d|[+*-\/\.]/.test(e.key);
       if(regex){
         setOperation(operation + e.key)
