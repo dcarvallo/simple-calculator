@@ -18,6 +18,7 @@ function App() {
     setResult(0);
   }
   return (
+    <div className='App'>
     <div className='grid'>
       <div id="results">
         {operation}<br></br>
@@ -40,6 +41,7 @@ function App() {
       <button onClick={check} id="equal"> =</button>
       <button onClick={() => register('0')} id="zero">0</button>
       <button onClick={() => register('.')} id="dot">.</button>
+    </div>
     </div>
   );
 }

@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: cadetblue;
 }
 
 code {
@@ -12,14 +13,34 @@ code {
     monospace;
 }
 
-
+.App{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .grid{
+  vertical-align: auto;
+  padding: 15px;
+  border: 1px solid seashell;
+  border-radius: 15px;;
   width: 300px;
   display: grid;
   grid-template-columns: repeat(4,1fr);
   grid-auto-rows: minmax(50px,50px);
   gap: 10px;
   margin: 0 auto;
+}
+
+button{
+  font-size: 20px;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px 1px black;
+  transition: transform .3s ease;
+}
+
+button:hover{
+  transform: scale(1.06);
 }
 
 .grid > button{
