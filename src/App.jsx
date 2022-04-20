@@ -1,15 +1,45 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 function App() {
   const [result, setResult] = useState(0)
   const [operation, setOperation] = useState('')
 
+  useEffect(() => {
+    function handleKeyDown(e) {
+    if(!validate(e.key)) return;
+    var regex = /^\d|[+*-\/\.]/.test(e.key);
+      if(regex){
+        setOperation(operation + e.key)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown);
+    return function cleanup() {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [operation]);
+
+  const validate = (character) => {
+    
+    const regex = /[-+*\/\.]/
+    let last = operation.charAt(operation.length - 1)
+    console.log((character))
+    if(regex.test(character) && regex.test(last))
+    return false
+    return true
+  }
+
   const register = (el) => {
-    console.log(el)
+    if(!validate(el)) return;
     setOperation(operation + el)
   }
 
   const check = () => {
-    let res = eval(operation);
+    let res
+    try {
+      res = eval(operation);
+    } catch (error) {
+      res = 'syntax error'
+    }
     setResult(res);
   }
 
